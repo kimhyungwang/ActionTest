@@ -44,7 +44,7 @@ jobs:
       - name: Add remote server to known hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan ${{ secrets.SERVER_IP }} >> ~/.ssh/github_rsa
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
       - name: SCP transfer
         run: scp *.jar ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:~/cicd
